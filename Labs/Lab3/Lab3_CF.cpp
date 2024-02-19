@@ -16,8 +16,12 @@ int main()
     while(x < y) 
     {
         printf("%i\n", x);
-        x++;
+        x=x + 3;
     }
-    printf("Looped through 5 times\n");
+    
+    if (x%2 == 0)
+        printf("Even");
+    else
+        printf("Odd");
     return 0;
 }
