@@ -1,5 +1,19 @@
 #include"RPG.h"
 
+void displayStats(RPG player1, RPG player2)
+{
+
+}
+
+void displayEnd(RPG player1, RPG player2)
+{
+
+}
+
+void gameLoop(RPG * player1, RPG * player2)
+{
+
+}
 
 int main()
 {

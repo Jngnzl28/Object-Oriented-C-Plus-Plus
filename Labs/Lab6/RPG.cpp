@@ -78,3 +78,50 @@ int RPG::getDefense() const
 {
     return defense;
 }
+
+void RPG::attack(RPG * opponent)
+{
+    int opp_health = (*opponent).getHealth();
+    int opp_def = (*opponent).getDefense();
+    if(strength-opp_def > 0)
+    {
+        int new_health = opp_health - (strength - opp_def);
+        (*opponent).updateHealth(new_health);
+    }
+    else
+    {
+        int new_health = opp_health;
+        (*opponent).updateHealth(new_health);
+    }
+    
+
+    
+}
+
+void RPG::useSkill(RPG * opponent)
+{
+    // use a for loop to display player skills
+    for(int i = 0;i <SKILL_SIZE; i++)
+    {
+        printf("Skill %i: %s\n", i, skills[i].c_str());
+    }
+    
+    //create an int called chosen_skill_index
+    int chosen_skill_index;
+
+    //print 
+    printf("Choose a skill to use: Enter 0 or 1\n");
+
+    //get user input to get chosen skill
+    cin >> chosen_skill_index;
+    
+    //assigns chosen skill into a string called chosen_skill
+    string chosen_skill = skills[chosen_skill_index];
+    
+    //call printAction(string, RPG) and use chosen_skill and (*opponent)
+    //as the parameters
+    printAction(chosen_skill,(*opponent));
+    
+    //call to attack the opponent
+    attack(opponent);
+}
