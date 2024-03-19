@@ -56,7 +56,7 @@ void RPG::updateHealth(int new_health)
 
 bool RPG::isAlive() const
 {
-    return health != 0;
+    return health > 0;
 }
 
 string RPG::getName() const
@@ -110,7 +110,7 @@ void RPG::useSkill(RPG * opponent)
     int chosen_skill_index;
 
     //print 
-    printf("Choose a skill to use: Enter 0 or 1\n");
+    printf("\nChoose a skill to use: Enter 0 or 1\n");
 
     //get user input to get chosen skill
     cin >> chosen_skill_index;
