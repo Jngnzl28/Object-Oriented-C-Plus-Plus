@@ -1,11 +1,15 @@
 #include <iostream>
 #include <fstream>
+#include <stdio.h>
+#include <string>
 
 using namespace std;
+
+
 void writeToFile(string filename, int * arr, int sample_size)
 {
     ofstream file(filename);
-    int val;
+
     
     for(int i = 0; i < sample_size; i++){
         file << arr[i];
@@ -15,6 +19,50 @@ void writeToFile(string filename, int * arr, int sample_size)
     printf("Wrote to %s\n", filename.c_str());
 }
 
+void writeToFile(string filename, string * arr, int sample_size)
+{
+    ofstream file(filename);
+
+    
+    for(int i = 0; i < sample_size; i++){
+        file << arr[i];
+        file << "\n";
+    }
+    file.close();
+    printf("Wrote to %s\n", filename.c_str());
+}
+
+void writeToFile(string filename, char * arr, int sample_size)
+{
+    ofstream file(filename);
+
+    
+    for(int i = 0; i < sample_size; i++){
+        file << arr[i];
+        file << "\n";
+    }
+    file.close();
+    printf("Wrote to %s\n", filename.c_str());
+}
+
+void readFile(string filename)
+{
+    ifstream ifile;
+    ifile.open(filename.c_str());
+    string line;
+    
+    if (!ifile.fail())
+    {
+        while(getline(ifile, line))
+        {
+            cout << line << " ";
+        }
+        ifile.close();
+    } 
+    else
+        cout << "file not found.\n\n";
+
+}
 
 int main()
 {
@@ -29,6 +77,18 @@ int main()
     string int_file = "array_int.csv";
     writeToFile(int_file, array_int, SAMPLE_SIZE);
 
+    string str_file = "array_str.csv";
+    writeToFile(str_file, array_str, SAMPLE_SIZE);
+
+    string char_file = "array_char.csv";
+    writeToFile(char_file, array_char, SAMPLE_SIZE);
+
+    readFile(int_file);
+    cout << "\n\n";
+    readFile(str_file);
+    cout << "\n\n";
+    readFile(char_file);
+    cout << "\n\n";
 
     return 0;
 }
