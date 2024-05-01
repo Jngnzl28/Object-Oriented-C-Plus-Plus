@@ -6,8 +6,8 @@
 
 using namespace std;
 
-template<typename T>
-int iterativeSearch(vector<T>v, T elem)
+template<class T>
+T iterativeSearch(vector<T>v, T elem)
 {
     for(int i = 0; i < v.size(); i++)
     {
@@ -17,8 +17,8 @@ int iterativeSearch(vector<T>v, T elem)
     return -1;
 }
 
-template<typename T>
-int binarySearch(vector<T>v, T start, T end, T elem)
+template<class T, class U>
+int binarySearch(vector<T>v, U start, U end, T elem)
 {
     if (start > end)
         return -1;
@@ -37,7 +37,7 @@ template<class T, class U>
 void vecGen(T filename, vector<U> & v)
 {
     ifstream file(filename);
-    int num;
+    U num;
     v.clear();
     while (file.is_open() && file >> num) {
         v.push_back(num);
@@ -68,15 +68,21 @@ int main()
 
     cout << endl;
 
+    vector<double> d;
+    vecGen("1000_double.csv", d);
+    
+    vector<double> double_to_find;
+    vecGen("double_to_find.csv", double_to_find);
+    
+    cout << double_to_find[0] << endl;
     int b_start = 0;
-    int b_end = v.size() - 1;
+    int b_end = d.size() - 1;
 
-    for(int i = 0; i < elem_to_find.size(); i++)
+    for(int i = 0; i < double_to_find.size(); i++)
     {
-        int elem = elem_to_find[i];
-
+        double b_elem = double_to_find[i];
         auto start = chrono::high_resolution_clock::now();
-        int index_if_found = binarySearch(v, b_start, b_end, elem);
+        int index_if_found = binarySearch(d, b_start, b_end, b_elem);
         auto end = chrono::high_resolution_clock::now();
 
         auto duration = chrono::duration_cast<std::chrono::microseconds>(end - start);
