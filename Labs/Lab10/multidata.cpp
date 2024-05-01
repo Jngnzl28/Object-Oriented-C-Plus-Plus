@@ -6,7 +6,8 @@
 
 using namespace std;
 
-int iterativeSearch(vector<int>v, int elem)
+template<typename T>
+int iterativeSearch(vector<T>v, T elem)
 {
     for(int i = 0; i < v.size(); i++)
     {
@@ -16,7 +17,8 @@ int iterativeSearch(vector<int>v, int elem)
     return -1;
 }
 
-int binarySearch(vector<int>v, int start, int end, int elem)
+template<typename T>
+int binarySearch(vector<T>v, T start, T end, T elem)
 {
     if (start > end)
         return -1;
@@ -31,7 +33,8 @@ int binarySearch(vector<int>v, int start, int end, int elem)
     return binarySearch(v, start, end, elem);
 }
 
-void vecGen(string filename, vector<int> & v)
+template<class T, class U>
+void vecGen(T filename, vector<U> & v)
 {
     ifstream file(filename);
     int num;
