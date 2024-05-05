@@ -74,7 +74,7 @@ int main()
     vector<double> double_to_find;
     vecGen("double_to_find.csv", double_to_find);
     
-    cout << double_to_find[0] << endl;
+
     int b_start = 0;
     int b_end = d.size() - 1;
 
