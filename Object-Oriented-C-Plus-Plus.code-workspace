@@ -11,7 +11,8 @@
 			"system_error": "cpp",
 			"xlocale": "cpp",
 			"string": "cpp",
-			"vector": "cpp"
+			"vector": "cpp",
+			"chrono": "cpp"
 		}
 	}
 }
